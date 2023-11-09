@@ -1,3 +1,5 @@
+Original release on Hive: https://www.hiveworkshop.com/threads/notepad-jass-vjass-syntax-highlighter-2023-update.341147/
+
 [b]Features:[/b]
 [list]
 [li]100% Jass2 syntax support[/li]
