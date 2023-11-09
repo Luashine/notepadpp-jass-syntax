@@ -1,5 +1,5 @@
 //===========================================================================
-// 
+//
 // Jass Syntax test
 // http://jass.sourceforge.net/doc/
 
@@ -36,7 +36,7 @@ globals
 
 	// Generated
 	trigger gg_trg_StartSound1 = null
-	
+
 	// Duplicating constants from blizzard.j for syntax highlighting
 	constant real bj_PI = 3.14159
 endglobals
@@ -63,13 +63,15 @@ function RandomStuff takes nothing returns nothing
 	call DisplayTextToForce( GetPlayersAll(), "TRIGSTR_005" )
 	call DisplayTextToForce( GetPlayersAll(), "Back\\Slash" )
 	call MultilineString(" \
-")
+-")
+
+
 	call PlaySoundBJ( gg_snd_H04Jaina05 )
     call TriggerAddAction( someTrigger, function callback )
     call SetPlayerController( Player(0), MAP_CONTROL_USER )
 	call SetPlayerAllianceStateAllyBJ( Player(0), Player(1), true )
 	call SetPlayerAllianceStateAllyBJ( Player(0), Player(1), false )
-	
+
 	set uArray[3] = CreateUnit(Player(0), 'hfoo', -200, 123, 90)
 	set noinit = "it's now initialized"
 endfunction
@@ -85,17 +87,17 @@ endfunction
 
 function conditionals takes nothing returns nothing
 	if 3 == 4-1 then
-		DoNothing() // NOP function
+		call DoNothing() // NOP function
 	endif
-	
+
 	if 2*2 == 0 then
-		DoNothing()
+		call DoNothing()
 	elseif 1*2 == 3 then
 		// We could do nothing again
 	else
-		DoNothing()
+		call DoNothing()
 	endif
-	
+
 	return
 endfunction
 
@@ -105,37 +107,37 @@ function expressions takes nothing returns boolean
 	local integer multiply = 3 * 3
 	local integer divide = 20 / 4
 	local integer precedence = 4 + 2 * 3 - 60 / 6
-	
+
 	local real tau = 3.14 * 2
-	
+
 	local boolean equals         = 4 == 4
 	local boolean notEquals     = 4 != 4
 	local boolean greaterEquals = 4 >= 4
 	local boolean lessEquals    = 4 <= 4
 	local boolean greaterThan   = 4 > 4
 	local boolean lessThan       = 4 < 4
-	
+
 	local boolean boolAnd = true and true
 	local boolean boolOr = false or true
 	local boolean boolNot = not true
-	
+
 	local integer inlineMath = 2 <= 3 and -2 or -3
-	
+
 	local string s = "hello, " + "world!"
 	local boolean parentheses = ( (2 == 2) and 1 == 1 ) and true or false
-	
+
 	local integer ascii_code = 'd' // 100
 	// This is made into a 32-bit integer:
 	// Pseudocode: (97 << 24 + 98 << 16 + 99 << 8 + 100)
 	// Note that JASS2 does not support bitwise operators
 	local integer fourCC_code = 'abcd'
-	
+
 	local integer _identifierA123
 	local integer hex = $a
 	local integer hex2 = $0x123c
 	local integer hex3 = $0X123c
 	local integer octal = 0777
-	
+
 	return true
 endfunction
 
@@ -149,11 +151,11 @@ function debugmode takes nothing returns nothing
 	else
 		call DisplayTimedTextToPlayer(Player(0),0,0,60, "debugged if statement: false")
 	endif
-	
+
 	debug loop
-	
+
 		call DisplayTimedTextToPlayer(Player(0),0,0,60, "debugged loop")
-		
+		exitwhen true
 	endloop
 endfunction
 
