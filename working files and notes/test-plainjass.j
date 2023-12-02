@@ -1,7 +1,8 @@
 //===========================================================================
 //
 // Jass Syntax test
-// http://jass.sourceforge.net/doc/
+// https://jass.sourceforge.net/doc/ (partially outdated)
+// https://github.com/lep/pjass/ (syntax checker, up to date)
 
 // type system and game API native function definitions
 
