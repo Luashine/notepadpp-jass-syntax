@@ -144,6 +144,7 @@ function expressions takes nothing returns boolean
 	local integer identifierA123
 	local integer hex = $a
 	local integer hex2 = $123c
+	local integer hex3 = 0x123
 	local integer octal = 0777
 
 	return true
