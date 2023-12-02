@@ -59,15 +59,24 @@ function Default_Melee_Init takes nothing returns nothing
 	call MeleeStartingUnits(  )
 endfunction
 
+function someTrigger_callback takes nothing returns nothing
+	call DisplayTextToForce( GetPlayersAll(), "someTrigger_callback fired." )
+endfunction
+
 function RandomStuff takes nothing returns nothing
+	local trigger someTrigger = CreateTrigger()
+	local sound snd = CreateSound("Sound\\Interface\\ClanInvitation.wav", false, false, false, 10, 10, null)
+	call StartSound( snd )
+	// KillWhenDone to avoid leaks
+
 	call DisplayTextToForce( GetPlayersAll(), "TRIGSTR_005" )
 	call DisplayTextToForce( GetPlayersAll(), "Back\\Slash" )
-	call MultilineString(" \
+	call DisplayTextToForce( GetPlayersAll(), "MultilineString:
 -")
 
 
-	call PlaySoundBJ( gg_snd_H04Jaina05 )
-    call TriggerAddAction( someTrigger, function callback )
+
+    call TriggerAddAction( someTrigger, function someTrigger_callback )
     call SetPlayerController( Player(0), MAP_CONTROL_USER )
 	call SetPlayerAllianceStateAllyBJ( Player(0), Player(1), true )
 	call SetPlayerAllianceStateAllyBJ( Player(0), Player(1), false )
@@ -121,8 +130,6 @@ function expressions takes nothing returns boolean
 	local boolean boolOr = false or true
 	local boolean boolNot = not true
 
-	local integer inlineMath = 2 <= 3 and -2 or -3
-
 	local string s = "hello, " + "world!"
 	local boolean parentheses = ( (2 == 2) and 1 == 1 ) and true or false
 
@@ -132,10 +139,10 @@ function expressions takes nothing returns boolean
 	// Note that JASS2 does not support bitwise operators
 	local integer fourCC_code = 'abcd'
 
-	local integer _identifierA123
+	// leading or trailing underscore _ not allowed
+	local integer identifierA123
 	local integer hex = $a
-	local integer hex2 = $0x123c
-	local integer hex3 = $0X123c
+	local integer hex2 = $123c
 	local integer octal = 0777
 
 	return true
@@ -160,7 +167,8 @@ function debugmode takes nothing returns nothing
 endfunction
 
 function receivesCallback takes code someFunc returns nothing
-	call someFunc()
+	// it is not allowed to directly call a "code" variable in Jass
+	call DoNothing()
 endfunction
 
 function passAFunction takes nothing returns nothing
