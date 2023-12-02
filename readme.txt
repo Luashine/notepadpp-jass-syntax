@@ -88,6 +88,11 @@ So then you only have the two keywords at your disposal "takes" and "returns". B
 The workaround was to abuse delimiters. "Takes" is registered to start a new code block. However if "takes" is captured as part of a delimiter, it will NOT start a new code block. With this trick, natives are actually just highlighted "delimiter 7" keywords that grab the next "takes" word and thus suppress the creation of a code-block for native definitions.
 
 [HEADING=2]Changelog[/HEADING]
+[SPOILER="Version 7.5"]
+Test file: Fix actual syntax errors in the plain jass example file
+Update the screenshot accordingly
+[/SPOILER]
+
 [SPOILER="Version 7"]
 
 Jass & vJass: Fix incorrect hexadecimal prefix (only 0x, 0X and $ are valid).
